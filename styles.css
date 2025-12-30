@@ -2,6 +2,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Touch-only: disable tap highlight on anchors (keeps keyboard focus visible) */
+@media (hover: none) and (pointer: coarse) {
+  a, a:active, a:focus {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+}
 .montserrat-200 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
