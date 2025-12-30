@@ -1,0 +1,304 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.montserrat-200 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+body {
+  background-color: #e8e8e8;
+  cursor: url("icons/anchor-point.png"), pointer;
+  position: relative; /* Add this so absolute items stay within the body */
+  overflow-x: hidden; /* Prevents scrollbars if triangles go off edge */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  height: auto;
+  padding-bottom: 2rem;
+}
+
+.top-margin {
+  margin-top: 2rem;
+}
+a {
+  text-decoration: none;
+  color: #090909;
+  cursor: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  text-align: center;
+}
+h3 {
+  margin: 1em 0 0 0;
+}
+#header {
+  position: relative;
+  z-index: 1;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+#projects {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 2em;
+  min-height: 90vh;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.elvated-background {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.neumorphic-headshot {
+  width: 96vw;
+  /* Adjust size as needed */
+  height: auto;
+
+  /* Center the circle inside the square */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* YOUR CODE ADAPTED */
+  padding: 12px;
+  /* Slightly smaller frame so it overlaps neatly */
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  /* Increased radius usually looks softer for headshots */
+
+  /* The Shadow (The key to the effect) */
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+
+  transition: all 0.3s ease-in-out;
+
+  /* overlap the header */
+  position: relative;
+  margin-bottom: 100px;
+  z-index: 2;
+}
+
+/* Optional: Lift effect on Hover */
+
+.neumorphic-circle {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  /* Ensures the image doesn't stretch */
+
+  /* Circular Shape */
+  border-radius: 50%;
+  border: 4px solid #e8e8e8;
+  /* Optional: adds a border that blends in */
+
+  /* The Shadow */
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+
+  transition: all 0.3s;
+}
+/* --- HEADER INTERACTION --- */
+
+#header {
+  /* Existing styles... */
+  position: relative;
+  z-index: 1;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all 0.1s ease-in-out; /* Faster transition for clicks feels better */
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+/* Hover State */
+/* We target the header when the wrapping 'a' is hovered */
+a:hover #header {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 20px #c5c5c5, -10px -10px 20px #ffffff;
+  cursor: url("icons/anchor-point.png"), auto;
+}
+
+/* Active (Click) State */
+/* We target the header when the wrapping 'a' is being clicked */
+a:active #header {
+  color: #666;
+  transform: translateY(0px); /* Return to original plane or slightly down */
+  /* The Inset Shadow */
+  box-shadow: inset 4px 4px 8px #c5c5c5, inset -4px -4px 8px #ffffff;
+}
+
+/* --- HEADSHOT INTERACTION --- */
+
+.neumorphic-headshot {
+  /* Existing styles... */
+  width: 96vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  position: relative;
+  margin-bottom: 100px;
+  z-index: 2;
+  transition: all 0.2s ease-in-out;
+
+  /* Default Shadow */
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+/* Hover State */
+a:hover .neumorphic-headshot {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 20px #c5c5c5, -10px -10px 20px #ffffff;
+}
+
+/* Active (Click) State */
+a:active .neumorphic-headshot {
+  color: #666;
+  transform: translateY(0px);
+  /* The Inset Shadow */
+  box-shadow: inset 4px 4px 8px #c5c5c5, inset -4px -4px 8px #ffffff;
+}
+/* The Container: Centers them and controls the gap */
+.triangle-cluster {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  gap: 15px; /* Tightly packed */
+  margin-top: 50px; /* Space from the Header above */
+  margin-bottom: 50px; /* Space from the Projects below */
+  flex-wrap: wrap; /* Allows them to stack if screen is small */
+}
+
+/* The Shape */
+/* CONTAINER */
+.triangle-cluster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  /* Ensure there is enough space above and below */
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+
+  /* Ensure it sits on top of the background */
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+/* THE TRIANGLE SHAPE */
+.triangle {
+  width: 50px; /* Slightly bigger for visibility */
+  height: 50px;
+
+  /* 1. VISIBILITY FIX: Make it slightly darker than the body (#e8e8e8) */
+  background-color: #e0e0e0;
+
+  /* Shape */
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+
+  /* 2. SHADOW FIX: Darker shadows for higher contrast */
+  filter: drop-shadow(6px 6px 4px #a3a3a3) drop-shadow(-6px -6px 4px #ffffff);
+
+  transition: all 0.3s ease;
+}
+
+/* ROTATION */
+/* .triangle:nth-child(even) {
+  transform: rotate(180deg);
+  filter: drop-shadow(-6px -6px 4px #a3a3a3) drop-shadow(6px 6px 4px #ffffff);
+} */
+
+.project-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+.project-card {
+  display: grid;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  justify-content: center;
+  align-items: center;
+}
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 10px 10px 20px #c5c5c5, -10px -10px 20px #ffffff;
+}
+.project-image {
+  box-sizing: border-box;
+  padding-inline: clamp(8px, 2.5vw, 24px);
+  width: 90%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 auto; /* center the image container */
+}
+.project-image-style {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+.project-content {
+  padding: 0 0.5rem 0.5rem 0.5rem;
+}
+.project-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+  text-align: center;
+}
+.project-description {
+  font-size: 1rem;
+  color: #555;
+}
