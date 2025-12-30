@@ -26,7 +26,7 @@ html {
   a, a *, html, body, :target, #projects, header, .neumorphic-headshot {
     -webkit-tap-highlight-color: transparent !important;
   }
-  a:active, a *:active, :target {
+  a:active, a *:active, :target, html, body{
     background-color: transparent !important;
     outline: none !important;
   }
