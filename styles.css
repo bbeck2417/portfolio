@@ -331,3 +331,63 @@ a:active .neumorphic-headshot {
   font-size: 1rem;
   color: #555;
 }
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.social-container {
+    display: flex;
+    gap: 2rem; /* Space between buttons */
+}
+
+/* The Button Styling */
+.social-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Perfect Circle */
+    background: #e8e8e8;
+    color: #090909; /* Icon Color */
+    font-size: 24px; /* Icon Size */
+    
+    /* Flexbox centers the icon inside the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* The Neumorphic Shadow */
+    box-shadow: 6px 6px 10px #c5c5c5, 
+                -6px -6px 10px #ffffff;
+    
+    transition: all 0.2s ease-in-out;
+    cursor: pointer; /* Ensures hand cursor (or your custom one) */
+}
+
+/* Hover State - Pop Out */
+.social-btn:hover {
+    transform: translateY(-3px);
+    color: #333; /* Slightly lighter gray on hover */
+    box-shadow: 10px 10px 20px #c5c5c5, 
+                -10px -10px 20px #ffffff;
+}
+
+/* Active State - Pressed In */
+.social-btn:active {
+    transform: translateY(0);
+    box-shadow: inset 4px 4px 8px #c5c5c5, 
+                inset -4px -4px 8px #ffffff;
+    color: #090909;
+}
+
+.footer-text {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
