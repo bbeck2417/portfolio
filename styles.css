@@ -9,6 +9,11 @@ html {
     -webkit-touch-callout: none;
   }
 }
+@media (hover: none) and (pointer: coarse) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
 .montserrat-200 {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
