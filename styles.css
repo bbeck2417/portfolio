@@ -4,14 +4,31 @@ html {
 
 /* Touch-only: disable tap highlight on anchors (keeps keyboard focus visible) */
 @media (hover: none) and (pointer: coarse) {
-  a, a:active, a:focus {
+  /* Apply to anchors and any children so block-level anchors don't flash */
+  a, a:active, a:focus, a * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
   }
+
+  /* Make sure large touched elements (header, headshot, sections, target) don't show the highlight */
+  html, body, :target, #projects, header, .neumorphic-headshot {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  /* Prevent active background flashes on touched elements */
+  a:active, a *:active {
+    background-color: transparent !important;
+  }
 }
-@media (hover: none) and (pointer: coarse) {
-  * {
-    -webkit-tap-highlight-color: transparent;
+
+/* WebKit fallback for older Mobile Safari / Safari versions that may not match pointer media queries */
+@supports (-webkit-touch-callout: none) {
+  a, a *, html, body, :target, #projects, header, .neumorphic-headshot {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  a:active, a *:active, :target {
+    background-color: transparent !important;
+    outline: none !important;
   }
 }
 .montserrat-200 {
