@@ -139,7 +139,7 @@ h3 {
 
   /* overlap the header */
   position: relative;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
   z-index: 2;
 }
 
@@ -208,7 +208,7 @@ a:active #header {
   border: 1px solid #e8e8e8;
   border-radius: 20px;
   position: relative;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
   z-index: 2;
   transition: all 0.2s ease-in-out;
 
@@ -342,6 +342,21 @@ footer {
     width: 100%;
 }
 
+.header-social-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    justify-content: center; /* Center below the headshot */
+    align-items: center;
+    flex-wrap: nowrap; /* Keep them in a row */
+}
+.header-social-container a {
+    text-decoration: none; /* Remove underline from links */
+    cursor: url("icons/anchor-point.png"), pointer; /* Custom cursor */
+}
+
 .social-container {
     display: flex;
     gap: 2rem; /* Space between buttons */
@@ -375,6 +390,24 @@ footer {
     color: #333; /* Slightly lighter gray on hover */
     box-shadow: 10px 10px 20px #c5c5c5, 
                 -10px -10px 20px #ffffff;
+}
+
+/* Keyboard-only focus indicator (use :focus-visible so mouse/touch clicks don't show it) */
+.social-btn:focus-visible {
+    outline: 3px solid rgba(66, 133, 244, 0.9);
+    outline-offset: 3px;
+}
+
+/* Remove default blue focus ring for social links specifically; keep visual cue via regular box-shadow */
+.header-social-container .social-btn:focus {
+    outline: none;
+    box-shadow: 6px 6px 10px #c5c5c5, -6px -6px 10px #ffffff;
+}
+
+/* Also make sure touch highlights are disabled here */
+.header-social-container a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
 }
 
 /* Active State - Pressed In */
