@@ -418,6 +418,14 @@ footer {
     color: #090909;
 }
 
+.social-icon {
+    width: 32px;  /* Standard icon size */
+    height: 32px;
+    fill: currentColor; /* Inherits color from the link */
+    display: inline-block;
+    vertical-align: middle;
+}
+
 .footer-text {
     font-family: "Montserrat", sans-serif;
     font-size: 14px;
