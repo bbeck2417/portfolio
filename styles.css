@@ -2,6 +2,50 @@ html {
   scroll-behavior: smooth;
 }
 
+:root {
+  --color-primary: hsl(0, 0%, 4%);
+  --color-secondary: hsl(0, 0%, 91%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-shadow: hsl(0, 0%, 77%);
+  --color-shadow-dark: hsl(0, 0%, 64%);
+  --color-muted: hsl(0, 0%, 33%);
+  --color-muted-2: hsl(0, 0%, 40%);
+  --color-dark-muted: hsl(0, 0%, 20%);
+  --color-surface: hsl(0, 0%, 94%);
+  /* Accent colors (HSL) */
+  --color-accent: hsl(210, 90%, 56%); /* blue */
+  --color-accent-2: hsl(340, 85%, 56%); /* pink */
+  --color-triangle: hsl(0, 0%, 88%); /* slightly darker than body */
+  /* Headshot sizing (used in `.neumorphic-headshot`):
+     - `--headshot-min-width`: minimum width the headshot may shrink to on very small screens.
+     - `--headshot-max-width`: maximum width the headshot may grow to on large viewports.
+     Tweak these to control responsive scaling. */
+  --headshot-min-width: 260px; /* minimum width for the headshot */
+  --headshot-max-width: 720px; /* changeable max width for the headshot */
+  /* Add more global variables here */
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --color-primary: hsl(0, 0%, 96%);
+  --color-secondary: hsl(0, 0%, 12%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-shadow: hsl(0, 0%, 10%);
+  --color-shadow-dark: hsl(0, 0%, 8%);
+  --color-muted: hsl(0, 0%, 70%);
+  --color-muted-2: hsl(0, 0%, 55%);
+  --color-dark-muted: hsl(0, 0%, 90%);
+  --color-surface: hsl(0, 0%, 14%);
+  --color-triangle: hsl(0, 0%, 16%);
+  --color-accent: hsl(210, 90%, 66%);
+  --color-accent-2: hsl(340, 85%, 66%);
+} 
+
+/* Smooth theme transitions */
+:root, body, header, .elvated-background, .neumorphic-headshot, .project-card, .social-btn, .triangle, .project-description, .footer-text, a {
+  transition: background-color 250ms ease, color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+
 /* Touch-only: disable tap highlight on anchors (keeps keyboard focus visible) */
 @media (hover: none) and (pointer: coarse) {
   /* Apply to anchors and any children so block-level anchors don't flash */
@@ -39,7 +83,7 @@ html {
 }
 
 body {
-  background-color: #e8e8e8;
+  background-color: var(--color-secondary);
   cursor: url("icons/anchor-point.png"), pointer;
   position: relative; /* Add this so absolute items stay within the body */
   overflow-x: hidden; /* Prevents scrollbars if triangles go off edge */
@@ -60,7 +104,7 @@ main {
 }
 a {
   text-decoration: none;
-  color: #090909;
+  color: var(--color-primary);
   cursor: inherit;
 }
 
@@ -76,15 +120,16 @@ h3 {
 #header {
   position: relative;
   z-index: 1;
-  color: #090909;
+  color: var(--color-primary);
   padding: 0.7em 1.7em;
+  margin-bottom: 2rem;
   font-size: 18px;
   border-radius: 0.5em;
-  background: #e8e8e8;
+  background: var(--color-secondary);
   cursor: pointer;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--color-secondary);
   transition: all 0.3s;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
 }
 
 #projects {
@@ -92,142 +137,116 @@ h3 {
   flex-direction: column;
   gap: 1em;
   margin-top: 2em;
-  min-height: 90vh;
-  color: #090909;
+  min-height: 50vh;
+  color: var(--color-primary);
   padding: 0.7em 1.7em;
   font-size: 18px;
   border-radius: 0.5em;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
   transition: all 0.3s;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
 }
 
 .elvated-background {
-  color: #090909;
+  color: var(--color-primary);
   padding: 0.7em 1.7em;
   font-size: 18px;
   border-radius: 0.5em;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
   transition: all 0.3s;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
 }
 
+/* Headshot container */
 .neumorphic-headshot {
-  width: 96vw;
-  /* Adjust size as needed */
+  /* Responsive width: never too small or too large */
+  width: clamp(var(--headshot-min-width), 92vw, var(--headshot-max-width));
   height: auto;
-
-  /* Center the circle inside the square */
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* YOUR CODE ADAPTED */
   padding: 12px;
-  /* Slightly smaller frame so it overlaps neatly */
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
   border-radius: 20px;
-  /* Increased radius usually looks softer for headshots */
 
-  /* The Shadow (The key to the effect) */
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  /* The Shadow */
+  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
 
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-  /* overlap the header */
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   z-index: 2;
-}
+} 
 
 /* Optional: Lift effect on Hover */
 
 .neumorphic-circle {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  /* Ensures the image doesn't stretch */
+  width: clamp(100px, 22vw, 180px);
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover; /* Ensures the image doesn't stretch */
 
   /* Circular Shape */
   border-radius: 50%;
-  border: 4px solid #e8e8e8;
-  /* Optional: adds a border that blends in */
+  border: 4px solid var(--color-secondary);
 
   /* The Shadow */
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
 
   transition: all 0.3s;
-}
+} 
 /* --- HEADER INTERACTION --- */
 
 #header {
   /* Existing styles... */
   position: relative;
   z-index: 1;
-  color: #090909;
+  color: var(--color-primary);
   padding: 0.7em 1.7em;
   font-size: 18px;
   border-radius: 0.5em;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
   transition: all 0.1s ease-in-out; /* Faster transition for clicks feels better */
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
 }
 
 /* Hover State */
 /* We target the header when the wrapping 'a' is hovered */
 a:hover #header {
   transform: translateY(-5px);
-  box-shadow: 10px 10px 20px #c5c5c5, -10px -10px 20px #ffffff;
+  box-shadow: 10px 10px 20px var(--color-shadow), -10px -10px 20px var(--color-white);
   cursor: url("icons/anchor-point.png"), auto;
 }
 
 /* Active (Click) State */
 /* We target the header when the wrapping 'a' is being clicked */
 a:active #header {
-  color: #666;
+  color: var(--color-muted-2);
   transform: translateY(0px); /* Return to original plane or slightly down */
   /* The Inset Shadow */
-  box-shadow: inset 4px 4px 8px #c5c5c5, inset -4px -4px 8px #ffffff;
+  box-shadow: inset 4px 4px 8px var(--color-shadow), inset -4px -4px 8px var(--color-white);
 }
 
 /* --- HEADSHOT INTERACTION --- */
 
-.neumorphic-headshot {
-  /* Existing styles... */
-  width: 96vw;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
-  border-radius: 20px;
-  position: relative;
-  margin-bottom: 20px;
-  z-index: 2;
-  transition: all 0.2s ease-in-out;
-
-  /* Default Shadow */
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-}
-
 /* Hover State */
 a:hover .neumorphic-headshot {
   transform: translateY(-5px);
-  box-shadow: 10px 10px 20px #c5c5c5, -10px -10px 20px #ffffff;
+  box-shadow: 10px 10px 20px var(--color-shadow), -10px -10px 20px var(--color-white);
 }
 
 /* Active (Click) State */
 a:active .neumorphic-headshot {
-  color: #666;
+  color: var(--color-muted-2);
   transform: translateY(0px);
   /* The Inset Shadow */
-  box-shadow: inset 4px 4px 8px #c5c5c5, inset -4px -4px 8px #ffffff;
+  box-shadow: inset 4px 4px 8px var(--color-shadow), inset -4px -4px 8px var(--color-white);
 }
 /* The Container: Centers them and controls the gap */
 .triangle-cluster {
@@ -235,22 +254,13 @@ a:active .neumorphic-headshot {
   justify-content: center; /* Center horizontally */
   align-items: center;
   gap: 15px; /* Tightly packed */
-  margin-top: 50px; /* Space from the Header above */
-  margin-bottom: 50px; /* Space from the Projects below */
-  flex-wrap: wrap; /* Allows them to stack if screen is small */
-}
-
-/* The Shape */
-/* CONTAINER */
-.triangle-cluster {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
 
   /* Ensure there is enough space above and below */
-  margin-top: 3rem;
+  margin-top: 1.5rem; /* prefers rem spacing */
   margin-bottom: 3rem;
+
+  /* Layout helpers */
+  flex-wrap: wrap; /* Allows them to stack if screen is small */
 
   /* Ensure it sits on top of the background */
   position: relative;
@@ -258,19 +268,21 @@ a:active .neumorphic-headshot {
   width: 100%;
 }
 
+/* The Shape */
+
 /* THE TRIANGLE SHAPE */
 .triangle {
   width: 50px; /* Slightly bigger for visibility */
   height: 50px;
 
   /* 1. VISIBILITY FIX: Make it slightly darker than the body (#e8e8e8) */
-  background-color: #e0e0e0;
+  background-color: var(--color-triangle);
 
   /* Shape */
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 
   /* 2. SHADOW FIX: Darker shadows for higher contrast */
-  filter: drop-shadow(6px 6px 4px #a3a3a3) drop-shadow(-6px -6px 4px #ffffff);
+  filter: drop-shadow(6px 6px 4px var(--color-shadow-dark)) drop-shadow(-6px -6px 4px var(--color-white));
 
   transition: all 0.3s ease;
 }
@@ -278,7 +290,7 @@ a:active .neumorphic-headshot {
 /* ROTATION */
 /* .triangle:nth-child(even) {
   transform: rotate(180deg);
-  filter: drop-shadow(-6px -6px 4px #a3a3a3) drop-shadow(6px 6px 4px #ffffff);
+  filter: drop-shadow(-6px -6px 4px var(--color-shadow-dark)) drop-shadow(6px 6px 4px var(--color-white));
 } */
 
 .project-card-container {
@@ -289,9 +301,9 @@ a:active .neumorphic-headshot {
 }
 .project-card {
   display: grid;
-  background-color: #f0f0f0;
+  background-color: var(--color-surface);
   border-radius: 10px;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   justify-content: center;
@@ -299,7 +311,7 @@ a:active .neumorphic-headshot {
 }
 .project-card:hover {
   transform: scale(1.05);
-  box-shadow: 10px 10px 20px #c5c5c5, -10px -10px 20px #ffffff;
+  box-shadow: 10px 10px 20px var(--color-shadow), -10px -10px 20px var(--color-white);
 }
 .project-image {
   box-sizing: border-box;
@@ -329,7 +341,7 @@ a:active .neumorphic-headshot {
 }
 .project-description {
   font-size: 1rem;
-  color: #555;
+  color: var(--color-muted);
 }
 
 footer {
@@ -367,8 +379,8 @@ footer {
     width: 60px;
     height: 60px;
     border-radius: 50%; /* Perfect Circle */
-    background: #e8e8e8;
-    color: #090909; /* Icon Color */
+    background: var(--color-secondary);
+    color: var(--color-primary); /* Icon Color */
     font-size: 24px; /* Icon Size */
     
     /* Flexbox centers the icon inside the circle */
@@ -377,8 +389,8 @@ footer {
     align-items: center;
     
     /* The Neumorphic Shadow */
-    box-shadow: 6px 6px 10px #c5c5c5, 
-                -6px -6px 10px #ffffff;
+    box-shadow: 6px 6px 10px var(--color-shadow), 
+                -6px -6px 10px var(--color-white);
     
     transition: all 0.2s ease-in-out;
     cursor: pointer; /* Ensures hand cursor (or your custom one) */
@@ -387,9 +399,9 @@ footer {
 /* Hover State - Pop Out */
 .social-btn:hover {
     transform: translateY(-3px);
-    color: #333; /* Slightly lighter gray on hover */
-    box-shadow: 10px 10px 20px #c5c5c5, 
-                -10px -10px 20px #ffffff;
+    color: var(--color-dark-muted); /* Slightly lighter gray on hover */
+    box-shadow: 10px 10px 20px var(--color-shadow), 
+                -10px -10px 20px var(--color-white);
 }
 
 /* Keyboard-only focus indicator (use :focus-visible so mouse/touch clicks don't show it) */
@@ -401,7 +413,7 @@ footer {
 /* Remove default blue focus ring for social links specifically; keep visual cue via regular box-shadow */
 .header-social-container .social-btn:focus {
     outline: none;
-    box-shadow: 6px 6px 10px #c5c5c5, -6px -6px 10px #ffffff;
+    box-shadow: 6px 6px 10px var(--color-shadow), -6px -6px 10px var(--color-white);
 }
 
 /* Also make sure touch highlights are disabled here */
@@ -413,9 +425,9 @@ footer {
 /* Active State - Pressed In */
 .social-btn:active {
     transform: translateY(0);
-    box-shadow: inset 4px 4px 8px #c5c5c5, 
-                inset -4px -4px 8px #ffffff;
-    color: #090909;
+    box-shadow: inset 4px 4px 8px var(--color-shadow), 
+                inset -4px -4px 8px var(--color-white);
+    color: var(--color-primary);
 }
 
 .social-icon {
@@ -429,6 +441,6 @@ footer {
 .footer-text {
     font-family: "Montserrat", sans-serif;
     font-size: 14px;
-    color: #666;
+    color: var(--color-muted-2);
     margin-top: 10px;
 }

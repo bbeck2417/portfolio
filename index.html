@@ -65,14 +65,24 @@
           class="social-btn"
           aria-label="Visit my linkedin Profile"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="social-icon"viewBox="0 0 640 640"><!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM165 266.2L231.5 266.2L231.5 480L165 480L165 266.2zM236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160C219.5 160 236.7 177.2 236.7 198.5zM413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480L413.9 480z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="0 0 640 640"><!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM165 266.2L231.5 266.2L231.5 480L165 480L165 266.2zM236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160C219.5 160 236.7 177.2 236.7 198.5zM413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480L413.9 480z"/></svg>
         </a>
+        <button id="theme-toggle" class="social-btn" aria-pressed="false" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
       </div>
       <a href="#projects">
         <header id="header">
           <h1>Welcome to Billy's Portfolio</h1>
         </header>
       </a>
+
+      <section class="elvated-background montserrat-200" id="about">
+        <h2>About Me</h2>
+        <p>
+          Hello! I'm Billy, a passionate developer with experience in web
+          development, data analysis, and mobile app creation. Welcome to my
+          portfolio where you can explore some of my projects.
+        </p>
+      </section>
     </main>
     <div class="triangle-cluster">
       <div class="triangle"></div>
@@ -180,7 +190,42 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="social-icon" viewBox="0 0 640 640"><!--!Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM165 266.2L231.5 266.2L231.5 480L165 480L165 266.2zM236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160C219.5 160 236.7 177.2 236.7 198.5zM413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480L413.9 480z"/></svg>
         </a>
       </div>
-      <p class="footer-text">© 2025 Billy Beck</p>
+      <p class="footer-text">© <span id ="copyright-year"></span> Billy Beck</p>
     </footer>
+
+    <script>
+      
+      (function(){
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        const toggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const current = stored || (prefersDark ? 'dark' : 'light');
+        if(current === 'dark') {
+          root.setAttribute('data-theme','dark');
+          if(toggle){ toggle.setAttribute('aria-pressed','true'); toggle.textContent='☀️'; }
+        } else {
+          root.removeAttribute('data-theme');
+          if(toggle){ toggle.setAttribute('aria-pressed','false'); toggle.textContent='🌙'; }
+        }
+        if(toggle){
+          toggle.addEventListener('click', function(){
+            const isDark = root.getAttribute('data-theme') === 'dark';
+            if(isDark){
+              root.removeAttribute('data-theme');
+              localStorage.setItem('theme','light');
+              this.setAttribute('aria-pressed','false');
+              this.textContent='🌙';
+            } else {
+              root.setAttribute('data-theme','dark');
+              localStorage.setItem('theme','dark');
+              this.setAttribute('aria-pressed','true');
+              this.textContent='☀️';
+            }
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
