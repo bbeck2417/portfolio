@@ -23,7 +23,7 @@ html {
   --headshot-min-width: 260px; /* minimum width for the headshot */
   --headshot-max-width: 720px; /* changeable max width for the headshot */
   /* Add more global variables here */
-}
+}  
 
 /* Dark theme overrides */
 [data-theme="dark"] {
@@ -39,7 +39,7 @@ html {
   --color-triangle: hsl(0, 0%, 16%);
   --color-accent: hsl(210, 90%, 66%);
   --color-accent-2: hsl(340, 85%, 66%);
-} 
+}    
 
 /* Smooth theme transitions */
 :root, body, header, .elvated-background, .neumorphic-headshot, .project-card, .social-btn, .triangle, .project-description, .footer-text, a {
@@ -83,11 +83,12 @@ html {
 }
 
 body {
+  
   background-color: var(--color-secondary);
-  cursor: url("icons/anchor-point.png"), pointer;
+  
   position: relative; /* Add this so absolute items stay within the body */
   overflow-x: hidden; /* Prevents scrollbars if triangles go off edge */
-}
+}   
 
 main {
   display: flex;
@@ -221,8 +222,8 @@ h3 {
 a:hover #header {
   transform: translateY(-5px);
   box-shadow: 10px 10px 20px var(--color-shadow), -10px -10px 20px var(--color-white);
-  cursor: url("icons/anchor-point.png"), auto;
-}
+ 
+}   
 
 /* Active (Click) State */
 /* We target the header when the wrapping 'a' is being clicked */
@@ -366,8 +367,8 @@ footer {
 }
 .header-social-container a {
     text-decoration: none; /* Remove underline from links */
-    cursor: url("icons/anchor-point.png"), pointer; /* Custom cursor */
-}
+    
+} 
 
 .social-container {
     display: flex;
