@@ -82,20 +82,42 @@ document.addEventListener("DOMContentLoaded", () => {
       event: "link_click",
     },
   ];
+  function showToast(message) {
+    const toast = document.getElementById("toast");
+    if (toast) {
+      toast.textContent = message;
+      toast.classList.add("show");
 
+      // Hide the toast after 3 seconds
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    }
+  }
   trackableLinks.forEach((link) => {
     const element = document.getElementById(link.id);
     if (element) {
       element.addEventListener("click", () => {
+        // 1. Send GA Event
         gtag("event", link.event, {
           event_category: "engagement",
           event_label: link.name,
           link_id: link.id,
-          // Special parameter just for the resume download
           ...(link.id === "resume-download" && {
-            file_name: "Billy_Beck_Resume.pdf",
+            file_name: "Resume-William-Beck.pdf",
           }),
         });
+
+        // 2. Trigger Toast if it's the resume
+        if (link.id === "resume-download") {
+          showToast("Success! Resume download started.");
+        }
+
+        // Optional: Add a toast for the email link too!
+        if (link.id === "email-clicked") {
+          showToast("Opening your email client...");
+        }
+
         console.log(`GA Event Sent: ${link.name}`);
       });
     }
