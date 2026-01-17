@@ -1,19 +1,25 @@
 /**
  * script.js
- * Handles dynamic year update and theme toggling (light/dark mode)
- * for the portfolio website.
+ * Handles dynamic year update, theme toggling, and Google Analytics event tracking.
  */
 
 (function () {
-  document.getElementById("copyright-year").textContent =
-    new Date().getFullYear();
+  // Update Copyright Year
+  const yearElement = document.getElementById("copyright-year");
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  // Theme Toggling Logic
   const toggle = document.getElementById("theme-toggle");
   const root = document.documentElement;
   const stored = localStorage.getItem("theme");
   const prefersDark =
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
+
   const current = stored || (prefersDark ? "dark" : "light");
+
   if (current === "dark") {
     root.setAttribute("data-theme", "dark");
     if (toggle) {
@@ -27,6 +33,7 @@
       toggle.textContent = "🌙";
     }
   }
+
   if (toggle) {
     toggle.addEventListener("click", function () {
       const isDark = root.getAttribute("data-theme") === "dark";
@@ -44,18 +51,53 @@
     });
   }
 })();
-document.addEventListener("DOMContentLoaded", () => {
-  const resumeLink = document.getElementById("resume-download");
 
-  if (resumeLink) {
-    resumeLink.addEventListener("click", () => {
-      // This sends the event to Google Analytics
-      gtag("event", "resume_download", {
-        event_category: "engagement",
-        event_label: "Billy Beck Resume",
-        file_name: "Billy_Beck_Resume.pdf",
+// Google Analytics Event Tracking
+document.addEventListener("DOMContentLoaded", () => {
+  // Define all trackable links in an array of objects
+  const trackableLinks = [
+    {
+      id: "resume-download",
+      name: "Resume Download",
+      event: "resume_download",
+    },
+    { id: "github-visit", name: "GitHub (Header)", event: "link_click" },
+    { id: "github-visit-footer", name: "GitHub (Footer)", event: "link_click" },
+    { id: "linkedin-visit", name: "LinkedIn (Header)", event: "link_click" },
+    {
+      id: "linkedin-visit-footer",
+      name: "LinkedIn (Footer)",
+      event: "link_click",
+    },
+    { id: "email-clicked", name: "Email (Header)", event: "link_click" },
+    { id: "email-clicked-footer", name: "Email (Footer)", event: "link_click" },
+    {
+      id: "freecodecamp-visit",
+      name: "FreeCodeCamp (Header)",
+      event: "link_click",
+    },
+    {
+      id: "freecodecamp-visit-footer",
+      name: "FreeCodeCamp (Footer)",
+      event: "link_click",
+    },
+  ];
+
+  trackableLinks.forEach((link) => {
+    const element = document.getElementById(link.id);
+    if (element) {
+      element.addEventListener("click", () => {
+        gtag("event", link.event, {
+          event_category: "engagement",
+          event_label: link.name,
+          link_id: link.id,
+          // Special parameter just for the resume download
+          ...(link.id === "resume-download" && {
+            file_name: "Billy_Beck_Resume.pdf",
+          }),
+        });
+        console.log(`GA Event Sent: ${link.name}`);
       });
-      console.log("Resume download event sent to GA!");
-    });
-  }
+    }
+  });
 });
