@@ -23,7 +23,7 @@ html {
   --headshot-min-width: 260px; /* minimum width for the headshot */
   --headshot-max-width: 720px; /* changeable max width for the headshot */
   /* Add more global variables here */
-}  
+}
 
 /* Dark theme overrides */
 [data-theme="dark"] {
@@ -39,38 +39,73 @@ html {
   --color-triangle: hsl(0, 0%, 16%);
   --color-accent: hsl(210, 90%, 66%);
   --color-accent-2: hsl(340, 85%, 66%);
-}    
+}
 
 /* Smooth theme transitions */
-:root, body, header, .elvated-background, .neumorphic-headshot, .project-card, .social-btn, .triangle, .project-description, .footer-text, a {
-  transition: background-color 250ms ease, color 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+:root,
+body,
+header,
+p,
+.elvated-background,
+.neumorphic-headshot,
+.project-card,
+.social-btn,
+.triangle,
+.project-description,
+.footer-text,
+a {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
 }
 
 /* Touch-only: disable tap highlight on anchors (keeps keyboard focus visible) */
 @media (hover: none) and (pointer: coarse) {
   /* Apply to anchors and any children so block-level anchors don't flash */
-  a, a:active, a:focus, a * {
+  a,
+  a:active,
+  a:focus,
+  a * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
   }
 
   /* Make sure large touched elements (header, headshot, sections, target) don't show the highlight */
-  html, body, :target, #projects, header, .neumorphic-headshot {
+  html,
+  body,
+  :target,
+  #projects,
+  header,
+  .neumorphic-headshot {
     -webkit-tap-highlight-color: transparent !important;
   }
 
   /* Prevent active background flashes on touched elements */
-  a:active, a *:active {
+  a:active,
+  a *:active {
     background-color: transparent !important;
   }
 }
 
 /* WebKit fallback for older Mobile Safari / Safari versions that may not match pointer media queries */
 @supports (-webkit-touch-callout: none) {
-  a, a *, html, body, :target, #projects, header, .neumorphic-headshot {
+  a,
+  a *,
+  html,
+  body,
+  :target,
+  #projects,
+  header,
+  .neumorphic-headshot {
     -webkit-tap-highlight-color: transparent !important;
   }
-  a:active, a *:active, :target, html, body{
+  a:active,
+  a *:active,
+  :target,
+  html,
+  body {
     background-color: transparent !important;
     outline: none !important;
   }
@@ -83,12 +118,12 @@ html {
 }
 
 body {
-  
   background-color: var(--color-secondary);
-  
+  color: var(--color-primary);
+
   position: relative; /* Add this so absolute items stay within the body */
   overflow-x: hidden; /* Prevents scrollbars if triangles go off edge */
-}   
+}
 
 main {
   display: flex;
@@ -130,7 +165,9 @@ h3 {
   cursor: pointer;
   border: 1px solid var(--color-secondary);
   transition: all 0.3s;
-  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
+  box-shadow:
+    6px 6px 12px var(--color-shadow),
+    -6px -6px 12px var(--color-white);
 }
 
 #projects {
@@ -146,7 +183,9 @@ h3 {
   background: var(--color-secondary);
   border: 1px solid var(--color-secondary);
   transition: all 0.3s;
-  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
+  box-shadow:
+    6px 6px 12px var(--color-shadow),
+    -6px -6px 12px var(--color-white);
 }
 
 .elvated-background {
@@ -157,7 +196,9 @@ h3 {
   background: var(--color-secondary);
   border: 1px solid var(--color-secondary);
   transition: all 0.3s;
-  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
+  box-shadow:
+    6px 6px 12px var(--color-shadow),
+    -6px -6px 12px var(--color-white);
 }
 
 /* Headshot container */
@@ -175,14 +216,16 @@ h3 {
   border-radius: 20px;
 
   /* The Shadow */
-  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
+  box-shadow:
+    6px 6px 12px var(--color-shadow),
+    -6px -6px 12px var(--color-white);
 
   transition: all 0.2s ease-in-out;
 
   position: relative;
   margin-bottom: 20px;
   z-index: 2;
-} 
+}
 
 /* Optional: Lift effect on Hover */
 
@@ -197,10 +240,12 @@ h3 {
   border: 4px solid var(--color-secondary);
 
   /* The Shadow */
-  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
+  box-shadow:
+    6px 6px 12px var(--color-shadow),
+    -6px -6px 12px var(--color-white);
 
   transition: all 0.3s;
-} 
+}
 /* --- HEADER INTERACTION --- */
 
 #header {
@@ -214,16 +259,19 @@ h3 {
   background: var(--color-secondary);
   border: 1px solid var(--color-secondary);
   transition: all 0.1s ease-in-out; /* Faster transition for clicks feels better */
-  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
+  box-shadow:
+    6px 6px 12px var(--color-shadow),
+    -6px -6px 12px var(--color-white);
 }
 
 /* Hover State */
 /* We target the header when the wrapping 'a' is hovered */
 a:hover #header {
   transform: translateY(-5px);
-  box-shadow: 10px 10px 20px var(--color-shadow), -10px -10px 20px var(--color-white);
- 
-}   
+  box-shadow:
+    10px 10px 20px var(--color-shadow),
+    -10px -10px 20px var(--color-white);
+}
 
 /* Active (Click) State */
 /* We target the header when the wrapping 'a' is being clicked */
@@ -231,7 +279,9 @@ a:active #header {
   color: var(--color-muted-2);
   transform: translateY(0px); /* Return to original plane or slightly down */
   /* The Inset Shadow */
-  box-shadow: inset 4px 4px 8px var(--color-shadow), inset -4px -4px 8px var(--color-white);
+  box-shadow:
+    inset 4px 4px 8px var(--color-shadow),
+    inset -4px -4px 8px var(--color-white);
 }
 
 /* --- HEADSHOT INTERACTION --- */
@@ -239,7 +289,9 @@ a:active #header {
 /* Hover State */
 a:hover .neumorphic-headshot {
   transform: translateY(-5px);
-  box-shadow: 10px 10px 20px var(--color-shadow), -10px -10px 20px var(--color-white);
+  box-shadow:
+    10px 10px 20px var(--color-shadow),
+    -10px -10px 20px var(--color-white);
 }
 
 /* Active (Click) State */
@@ -247,7 +299,9 @@ a:active .neumorphic-headshot {
   color: var(--color-muted-2);
   transform: translateY(0px);
   /* The Inset Shadow */
-  box-shadow: inset 4px 4px 8px var(--color-shadow), inset -4px -4px 8px var(--color-white);
+  box-shadow:
+    inset 4px 4px 8px var(--color-shadow),
+    inset -4px -4px 8px var(--color-white);
 }
 /* The Container: Centers them and controls the gap */
 .triangle-cluster {
@@ -283,7 +337,8 @@ a:active .neumorphic-headshot {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 
   /* 2. SHADOW FIX: Darker shadows for higher contrast */
-  filter: drop-shadow(6px 6px 4px var(--color-shadow-dark)) drop-shadow(-6px -6px 4px var(--color-white));
+  filter: drop-shadow(6px 6px 4px var(--color-shadow-dark))
+    drop-shadow(-6px -6px 4px var(--color-white));
 
   transition: all 0.3s ease;
 }
@@ -300,19 +355,45 @@ a:active .neumorphic-headshot {
   gap: 1.5rem;
   width: 100%;
 }
+/* Update your existing project-card selector */
 .project-card {
   display: grid;
-  background-color: var(--color-surface);
+  background-color: var(--color-surface); /* Keep this for light mode */
   border-radius: 10px;
-  box-shadow: 6px 6px 12px var(--color-shadow), -6px -6px 12px var(--color-white);
+  box-shadow:
+    6px 6px 12px var(--color-shadow),
+    -6px -6px 12px var(--color-white);
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    background-color 0.3s,
+    backdrop-filter 0.3s;
   justify-content: center;
   align-items: center;
+  border: 1px solid transparent; /* Prepare for the glass border */
+}
+
+/* Add this specialized Glassmorphism for Dark Mode */
+[data-theme="dark"] .project-card {
+  /* Semi-transparent background */
+  background-color: rgba(255, 255, 255, 0.05);
+
+  /* The "Frosted" effect */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* A subtle white border makes it look like the edge of glass */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* Deepen the shadow for better lift */
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.4);
 }
 .project-card:hover {
   transform: scale(1.05);
-  box-shadow: 10px 10px 20px var(--color-shadow), -10px -10px 20px var(--color-white);
+  box-shadow:
+    10px 10px 20px var(--color-shadow),
+    -10px -10px 20px var(--color-white);
 }
 .project-image {
   box-sizing: border-box;
@@ -331,8 +412,9 @@ a:active .neumorphic-headshot {
   border-radius: 8px;
   margin: 0 auto;
 }
-.project-content {
+.project-content p {
   padding: 0 0.5rem 0.5rem 0.5rem;
+  color: var(--color-muted);
 }
 .project-title {
   font-size: 1.5rem;
@@ -346,102 +428,106 @@ a:active .neumorphic-headshot {
 }
 
 footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width: 100%;
 }
 
 .header-social-container {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    margin-top: 0;
-    margin-bottom: 2rem;
-    justify-content: center; /* Center below the headshot */
-    align-items: center;
-    flex-wrap: nowrap; /* Keep them in a row */
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  justify-content: center; /* Center below the headshot */
+  align-items: center;
+  flex-wrap: nowrap; /* Keep them in a row */
 }
 .header-social-container a {
-    text-decoration: none; /* Remove underline from links */
-    
-} 
+  text-decoration: none; /* Remove underline from links */
+}
 
 .social-container {
-    display: flex;
-    gap: 2rem; /* Space between buttons */
+  display: flex;
+  gap: 2rem; /* Space between buttons */
 }
 
 /* The Button Styling */
 .social-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%; /* Perfect Circle */
-    background: var(--color-secondary);
-    color: var(--color-primary); /* Icon Color */
-    font-size: 24px; /* Icon Size */
-    
-    /* Flexbox centers the icon inside the circle */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    /* The Neumorphic Shadow */
-    box-shadow: 6px 6px 10px var(--color-shadow), 
-                -6px -6px 10px var(--color-white);
-    
-    transition: all 0.2s ease-in-out;
-    cursor: pointer; /* Ensures hand cursor (or your custom one) */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Perfect Circle */
+  background: var(--color-secondary);
+  color: var(--color-primary); /* Icon Color */
+  font-size: 24px; /* Icon Size */
+
+  /* Flexbox centers the icon inside the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* The Neumorphic Shadow */
+  box-shadow:
+    6px 6px 10px var(--color-shadow),
+    -6px -6px 10px var(--color-white);
+
+  transition: all 0.2s ease-in-out;
+  cursor: pointer; /* Ensures hand cursor (or your custom one) */
 }
 
 /* Hover State - Pop Out */
 .social-btn:hover {
-    transform: translateY(-3px);
-    color: var(--color-dark-muted); /* Slightly lighter gray on hover */
-    box-shadow: 10px 10px 20px var(--color-shadow), 
-                -10px -10px 20px var(--color-white);
+  transform: translateY(-3px);
+  color: var(--color-dark-muted); /* Slightly lighter gray on hover */
+  box-shadow:
+    10px 10px 20px var(--color-shadow),
+    -10px -10px 20px var(--color-white);
 }
 
 /* Keyboard-only focus indicator (use :focus-visible so mouse/touch clicks don't show it) */
 .social-btn:focus-visible {
-    outline: 3px solid rgba(66, 133, 244, 0.9);
-    outline-offset: 3px;
+  outline: 3px solid rgba(66, 133, 244, 0.9);
+  outline-offset: 3px;
 }
 
 /* Remove default blue focus ring for social links specifically; keep visual cue via regular box-shadow */
 .header-social-container .social-btn:focus {
-    outline: none;
-    box-shadow: 6px 6px 10px var(--color-shadow), -6px -6px 10px var(--color-white);
+  outline: none;
+  box-shadow:
+    6px 6px 10px var(--color-shadow),
+    -6px -6px 10px var(--color-white);
 }
 
 /* Also make sure touch highlights are disabled here */
 .header-social-container a {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 /* Active State - Pressed In */
 .social-btn:active {
-    transform: translateY(0);
-    box-shadow: inset 4px 4px 8px var(--color-shadow), 
-                inset -4px -4px 8px var(--color-white);
-    color: var(--color-primary);
+  transform: translateY(0);
+  box-shadow:
+    inset 4px 4px 8px var(--color-shadow),
+    inset -4px -4px 8px var(--color-white);
+  color: var(--color-primary);
 }
 
 .social-icon {
-    width: 32px;  /* Standard icon size */
-    height: 32px;
-    fill: currentColor; /* Inherits color from the link */
-    display: inline-block;
-    vertical-align: middle;
+  width: 32px; /* Standard icon size */
+  height: 32px;
+  fill: currentColor; /* Inherits color from the link */
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .footer-text {
-    font-family: "Montserrat", sans-serif;
-    font-size: 14px;
-    color: var(--color-muted-2);
-    margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: var(--color-muted-2);
+  margin-top: 10px;
 }
