@@ -31,7 +31,7 @@ const SocialButton: React.FC<SocialButtonProps> = ({
     if (isExternal || isDownload) {
       return (
         <a
-          href={isDownload && href ? getAssetPath(href) : href}
+          href={href}
           className={className}
           aria-label={ariaLabel}
           id={id}
@@ -47,7 +47,7 @@ const SocialButton: React.FC<SocialButtonProps> = ({
 
     return (
       <Link
-        href={getAssetPath(href || '')}
+        href={href || ''}
         className={className}
         aria-label={ariaLabel}
         id={id}

@@ -1,10 +1,11 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig: NextConfig = {
   output: 'export',
-  // We keep basePath empty here to ensure the /out folder has a flat structure
-  // that matches the root of your GitHub repository.
-  // We handle the /portfolio prefix manually in our code using getAssetPath.
+  // Reverting to the native basePath as it is necessary for CSS/JS bundles
+  basePath: isProd ? '/portfolio' : '',
   images: {
     unoptimized: true,
   },
