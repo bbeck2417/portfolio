@@ -1,1 +1,0 @@
-This project's purpose is convert a statice HTML/CSS/Javascript portfolio site to a Next.js product. The source portfolio site is located at https://bbeck2417.github.io/portfolio/ and the github repository is located at https://github.com/bbeck2417/portfolio
