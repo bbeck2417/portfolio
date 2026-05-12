@@ -1,49 +1,150 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --color-primary: hsl(0, 0%, 4%);
+  --color-secondary: hsl(0, 0%, 91%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-shadow: hsl(0, 0%, 77%);
+  --color-shadow-dark: hsl(0, 0%, 64%);
+  --color-muted: hsl(0, 0%, 33%);
+  --color-muted-2: hsl(0, 0%, 40%);
+  --color-dark-muted: hsl(0, 0%, 20%);
+  --color-surface: hsl(0, 0%, 94%);
+  /* Accent colors (HSL) */
+  --color-accent: hsl(210, 90%, 56%); /* blue */
+  --color-accent-2: hsl(340, 85%, 56%); /* pink */
+  --color-triangle: hsl(0, 0%, 88%); /* slightly darker than body */
+  /* Headshot sizing */
+  --headshot-min-width: 260px;
+  --headshot-max-width: 720px;
+}
+
+[data-theme="dark"] {
+  --color-primary: hsl(0, 0%, 96%);
+  --color-secondary: hsl(0, 0%, 12%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-shadow: hsl(0, 0%, 10%);
+  --color-shadow-dark: hsl(0, 0%, 8%);
+  --color-muted: hsl(0, 0%, 70%);
+  --color-muted-2: hsl(0, 0%, 55%);
+  --color-dark-muted: hsl(0, 0%, 90%);
+  --color-surface: hsl(0, 0%, 14%);
+  --color-triangle: hsl(0, 0%, 16%);
+  --color-accent: hsl(210, 90%, 66%);
+  --color-accent-2: hsl(340, 85%, 66%);
+}
+
+/* Smooth theme transitions */
+:root,
+body,
+header,
+p,
+.elvated-background,
+.neumorphic-headshot,
+.project-card,
+.social-btn,
+.triangle,
+.project-description,
+.footer-text,
+a {
+  transition:
+    background-color 250ms ease,
+    color 250ms ease,
+    box-shadow 250ms ease,
+    border-color 250ms ease;
+}
+
+/* Touch-only: disable tap highlight on anchors */
+@media (hover: none) and (pointer: coarse) {
+  a,
+  a:active,
+  a:focus,
+  a * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  html,
+  body,
+  :target,
+  #projects,
+  header,
+  .neumorphic-headshot {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  a:active,
+  a *:active {
+    background-color: transparent !important;
   }
 }
 
-html {
-  height: 100%;
+/* WebKit fallback */
+@supports (-webkit-touch-callout: none) {
+  a,
+  a *,
+  html,
+  body,
+  :target,
+  #projects,
+  header,
+  .neumorphic-headshot {
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  a:active,
+  a *:active,
+  :target,
+  html,
+  body {
+    background-color: transparent !important;
+    outline: none !important;
+  }
 }
 
-html,
+.montserrat-200 {
+  font-weight: 200;
+  font-style: normal;
+}
+
 body {
-  max-width: 100vw;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  position: relative;
   overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 0.5rem;
+  height: auto;
+  padding-bottom: 2rem;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  color: var(--color-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  text-align: center;
+}
+
+h3 {
+  margin: 1em 0 0 0;
 }

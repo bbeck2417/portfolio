@@ -1,0 +1,22 @@
+.about {
+  color: var(--color-primary);
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: var(--color-secondary);
+  border: 1px solid var(--color-secondary);
+  transition: all 0.3s;
+  box-shadow:
+    6px 6px 12px var(--color-shadow),
+    -6px -6px 12px var(--color-white);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  margin-top: 0;
+}
+
+.about p {
+  line-height: 1.6;
+}

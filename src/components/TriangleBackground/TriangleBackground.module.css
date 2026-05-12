@@ -1,0 +1,22 @@
+.triangleCluster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.triangle {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-triangle);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  filter: drop-shadow(6px 6px 4px var(--color-shadow-dark))
+    drop-shadow(-6px -6px 4px var(--color-white));
+  transition: all 0.3s ease;
+}

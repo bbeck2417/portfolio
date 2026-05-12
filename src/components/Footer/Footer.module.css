@@ -1,0 +1,20 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.socialContainer {
+  display: flex;
+  gap: 2rem;
+}
+
+.footerText {
+  font-size: 14px;
+  color: var(--color-muted-2);
+  margin-top: 10px;
+}
