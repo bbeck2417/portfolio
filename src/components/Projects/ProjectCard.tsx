@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './Projects.module.css';
+import { getAssetPath } from '../../lib/utils';
 
 interface ProjectCardProps {
   href: string;
@@ -18,7 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ href, title, imageSrc, descri
         </div>
         <div className={styles.projectImage}>
           <Image
-            src={imageSrc}
+            src={getAssetPath(imageSrc)}
             alt={`${title} Screenshot`}
             width={400}
             height={250}
@@ -32,5 +33,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ href, title, imageSrc, descri
     </div>
   );
 };
+
 
 export default ProjectCard;
