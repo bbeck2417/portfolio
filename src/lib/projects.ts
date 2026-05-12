@@ -1,9 +1,14 @@
-// src/lib/projects.ts
+import { StaticImageData } from "next/image";
+
+// 1. Statically import your local images
+import webDevImg from "../../public/images/space-discoveries-project-thumbnail.jpg";
+import dataAnalyticsImg from "../../public/images/data-analytics-placeholder.jpg";
+import mobileAppImg from "../../public/images/mobile-app-placeholder.jpg";
 
 export interface Project {
   slug: string;
   title: string;
-  imageSrc: string;
+  imageSrc: StaticImageData | string; // 2. Allow StaticImageData
   href: string;
   description: string;
   order: number;
@@ -14,7 +19,7 @@ export function getAllProjects(): Project[] {
     {
       slug: "web-development",
       title: "Web Development",
-      imageSrc: "/images/space-discoveries-project-thumbnail.jpg",
+      imageSrc: webDevImg, // 3. Use the imported object instead of a string
       href: "https://bbeck2417.github.io/spacediscovery/",
       description:
         "Developed a responsive website using HTML, CSS, and JavaScript. Implemented modern design principles.",
@@ -23,7 +28,7 @@ export function getAllProjects(): Project[] {
     {
       slug: "data-analytics",
       title: "Data Analysis",
-      imageSrc: "/images/data-analytics-placeholder.jpg",
+      imageSrc: dataAnalyticsImg,
       href: "https://bbeck2417.github.io/spacediscovery/",
       description:
         "Analyzed large datasets using Python and Pandas to extract meaningful insights. Created visualizations.",
@@ -32,25 +37,13 @@ export function getAllProjects(): Project[] {
     {
       slug: "mobile-app",
       title: "Mobile App",
-      imageSrc: "/images/mobile-app-placeholder.jpg",
+      imageSrc: mobileAppImg,
       href: "https://bbeck2417.github.io/spacediscovery/",
       description:
         "Built a cross-platform mobile application using React Native. Focused on user experience and performance.",
       order: 3,
     },
-    // You can easily add your other projects below:
-    /*
-    {
-      slug: "mobile-app",
-      title: "Mobile App Development",
-      imageSrc: "/images/mobile-app-placeholder.jpg",
-      href: "#",
-      description: "Building an upcoming movie discovery application.",
-      order: 2
-    },
-    */
   ];
 
-  // Sort projects by their order property before returning
   return projects.sort((a, b) => (a.order > b.order ? 1 : -1));
 }
