@@ -1,6 +1,6 @@
-import React from 'react';
-import Image from 'next/image';
-import styles from './Projects.module.css';
+import React from "react";
+import Image from "next/image";
+import styles from "./Projects.module.css";
 
 interface ProjectCardProps {
   href: string;
@@ -9,7 +9,18 @@ interface ProjectCardProps {
   description: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ href, title, imageSrc, description }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  href,
+  title,
+  imageSrc,
+  description,
+}) => {
+  // Grab the base path from the environment
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+  // Combine basePath and imageSrc, handling potential double slashes
+  const formattedImageSrc = `${basePath}${imageSrc.startsWith("/") ? "" : "/"}${imageSrc}`;
+
   return (
     <div className={`${styles.projectCard} montserrat-200`}>
       <a href={href} target="_blank" rel="noopener noreferrer">
@@ -18,7 +29,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ href, title, imageSrc, descri
         </div>
         <div className={styles.projectImage}>
           <Image
-            src={imageSrc}
+            src={formattedImageSrc}
             alt={`${title} Screenshot`}
             width={400}
             height={250}

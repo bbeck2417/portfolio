@@ -7,6 +7,7 @@ import SocialButton from '../SocialButton/SocialButton';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import { GithubIcon, EmailIcon, LinkedinIcon, FreeCodeCampIcon, ResumeIcon } from '../Icons';
 import { sendGTMEvent } from '@next/third-parties/google';
+import { getAssetPath } from '../../lib/utils';
 
 interface HeroProps {
   onAction: (message: string) => void;
@@ -29,7 +30,7 @@ const Hero: React.FC<HeroProps> = ({ onAction }) => {
       <a href="#projects" aria-label="Skip to Projects Section">
         <div className={`${styles.neumorphicHeadshot} ${styles.topMargin}`}>
           <Image
-            src="/images/headshot.jpg"
+            src={getAssetPath('/images/headshot.jpg')}
             alt="Billy Beck Headshot"
             width={180}
             height={180}
@@ -87,7 +88,7 @@ const Hero: React.FC<HeroProps> = ({ onAction }) => {
 
       <div className={styles.resumeSection}>
         <SocialButton
-          href="/resume.pdf"
+          href={getAssetPath('/resume.pdf')}
           ariaLabel="Download My Resume"
           download="Resume-William-Beck"
           id="resume-download"
