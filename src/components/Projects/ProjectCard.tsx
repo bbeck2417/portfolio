@@ -28,7 +28,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <h3>{title}</h3>
         </div>
         <div className={styles.projectImage}>
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={formattedImageSrc}
             alt={`${title} Screenshot`}
             width={400}
