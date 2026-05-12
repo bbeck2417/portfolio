@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './SocialButton.module.css';
+import { getAssetPath } from '../../lib/utils';
 
 interface SocialButtonProps {
   href?: string;
@@ -24,16 +25,13 @@ const SocialButton: React.FC<SocialButtonProps> = ({
   const className = `${styles.socialBtn} ${href ? styles.link : styles.button}`;
 
   if (href) {
-    // If it's an external link or has a download attribute, Link might not be ideal
-    // but Next.js 13+ Link handles external links fine.
-    // However, for 'download' and 'mailto:', raw <a> is often preferred.
-    // If it starts with 'http', 'mailto:', or has 'download', we use raw <a>.
-    const isExternal = href.startsWith('http') || href.startsWith('mailto:') || download;
+    const isExternal = href && (href.startsWith('http') || href.startsWith('mailto:'));
+    const isDownload = !!download;
 
-    if (isExternal) {
+    if (isExternal || isDownload) {
       return (
         <a
-          href={href}
+          href={isDownload && href ? getAssetPath(href) : href}
           className={className}
           aria-label={ariaLabel}
           id={id}
@@ -49,7 +47,7 @@ const SocialButton: React.FC<SocialButtonProps> = ({
 
     return (
       <Link
-        href={href}
+        href={getAssetPath(href || '')}
         className={className}
         aria-label={ariaLabel}
         id={id}
@@ -73,6 +71,5 @@ const SocialButton: React.FC<SocialButtonProps> = ({
     </button>
   );
 };
-
 
 export default SocialButton;

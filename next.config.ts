@@ -5,7 +5,8 @@ const basePath = isProd ? '/portfolio' : '';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath,
+  // We remove basePath here to prevent Next.js from creating a /portfolio subfolder in /out
+  // Instead, we handle the prefixing manually for GitHub Pages compatibility
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
   },

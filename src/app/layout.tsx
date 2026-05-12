@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Billy Beck - Developer Portfolio",
     description: "Check out my latest projects in Sports Analytics and Web Development.",
-    images: ["/images/headshot.jpg"],
+    images: ["/portfolio/images/headshot.jpg"],
     url: "https://bbeck2417.github.io/portfolio/",
     type: "website",
   },
