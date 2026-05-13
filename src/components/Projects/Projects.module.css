@@ -22,7 +22,9 @@
 
 .projectCardContainer {
   display: grid;
+  /* Use auto-rows to force all rows to match the tallest item's height */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-auto-rows: 1fr;
   gap: 1.5rem;
   width: 100%;
 }
@@ -41,12 +43,18 @@
     box-shadow 0.3s,
     background-color 0.3s,
     backdrop-filter 0.3s;
-  justify-content: start;
-  align-items: center;
-  border: 1px solid transparent;
-  padding-bottom: 1rem;
-}
 
+  /* Remove justify-content: start and change align-items */
+  align-items: stretch;
+  border: 1px solid transparent;
+  padding-bottom: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+
+  /* Forces the card to span 100% height of its grid track */
+  height: 100%;
+  width: 100%;
+}
 [data-theme="dark"] .projectCard {
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -64,7 +72,7 @@
 
 .projectImage {
   box-sizing: border-box;
-  padding-inline: clamp(8px, 2.5vw, 24px);
+  padding-inline: 1.5rem; /* Matches the text description side padding */
   width: 100%;
   height: auto;
   padding-top: 1rem;
@@ -73,8 +81,9 @@
 .projectImageStyle {
   display: block;
   width: 100%;
-  height: auto;
+  height: 220px;
   object-fit: cover;
+  object-position: top;
   border-radius: 8px;
   margin: 0 auto;
 }
@@ -86,8 +95,19 @@
   padding: 0 1rem;
 }
 
+.projectContent {
+  width: 100%;
+  box-sizing: border-box;
+  flex-grow: 1; /* Pushes content down to equalize card footer lines */
+  display: flex;
+  flex-direction: column;
+}
+
 .projectContent p {
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   color: var(--color-muted);
   text-align: center;
+  word-wrap: break-word;
+  margin-top: 0.75rem;
+  margin-bottom: 0; /* Clear bottom margins to prevent layout calculations breaking */
 }

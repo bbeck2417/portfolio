@@ -16,26 +16,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
 }) => {
   return (
-    <div className={`${styles.projectCard} montserrat-200`}>
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        <div className={styles.projectTitle}>
-          <h3>{title}</h3>
-        </div>
-        <div className={styles.projectImage}>
-          {/* Next.js automatically applies the basePath to statically imported images */}
-          <Image
-            src={imageSrc}
-            alt={`${title} Screenshot`}
-            width={400}
-            height={250}
-            className={styles.projectImageStyle}
-          />
-        </div>
-        <div className={styles.projectContent}>
-          <p>{description}</p>
-        </div>
-      </a>
-    </div>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${styles.projectCard} montserrat-200`}
+    >
+      <div className={styles.projectTitle}>
+        <h3>{title}</h3>
+      </div>
+
+      <div className={styles.projectImage}>
+        <Image
+          src={imageSrc}
+          alt={`${title} Screenshot`}
+          width={400}
+          height={250}
+          className={styles.projectImageStyle}
+          priority={true} /* Optimizes loading speeds for top layout assets */
+        />
+      </div>
+
+      <div className={styles.projectContent}>
+        <p>{description}</p>
+      </div>
+    </a>
   );
 };
 

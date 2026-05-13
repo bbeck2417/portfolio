@@ -8,9 +8,9 @@ html {
   --color-white: hsl(0, 0%, 100%);
   --color-shadow: hsl(0, 0%, 77%);
   --color-shadow-dark: hsl(0, 0%, 64%);
-  --color-muted: hsl(0, 0%, 33%);
-  --color-muted-2: hsl(0, 0%, 40%);
-  --color-dark-muted: hsl(0, 0%, 20%);
+  --color-muted: hsl(0, 0%, 16%);
+  --color-muted-2: hsl(0, 0%, 25%);
+  --color-dark-muted: hsl(0, 0%, 10%);
   --color-surface: hsl(0, 0%, 94%);
   /* Accent colors (HSL) */
   --color-accent: hsl(210, 90%, 56%); /* blue */
@@ -104,7 +104,7 @@ a {
 }
 
 .montserrat-200 {
-  font-weight: 200;
+  font-weight: 350;
   font-style: normal;
 }
 
