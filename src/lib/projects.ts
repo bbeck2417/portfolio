@@ -37,7 +37,7 @@ export function getAllProjects(): Project[] {
     },
     {
       slug: "mobile-app",
-      title: "Mobile App",
+      title: "React Native, TypeScript, SQLite, and Expo",
       imageSrc: mobileAppImg,
       href: "https://github.com/bbeck2417/ease/",
       description:
