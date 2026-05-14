@@ -40,20 +40,12 @@
   overflow: hidden;
   transition:
     transform 0.3s,
-    box-shadow 0.3s,
-    background-color 0.3s,
-    backdrop-filter 0.3s;
-
-  /* Remove justify-content: start and change align-items */
+    box-shadow 0.3s;
   align-items: stretch;
-  border: 1px solid transparent;
   padding-bottom: 1.5rem;
-  text-decoration: none;
-  color: inherit;
-
-  /* Forces the card to span 100% height of its grid track */
   height: 100%;
   width: 100%;
+  /* Removed text-decoration and color: inherit since it's no longer an <a> tag */
 }
 [data-theme="dark"] .projectCard {
   background-color: rgba(255, 255, 255, 0.05);
@@ -98,7 +90,7 @@
 .projectContent {
   width: 100%;
   box-sizing: border-box;
-  flex-grow: 1; /* Pushes content down to equalize card footer lines */
+  flex-grow: 1; /* Pushes the actions container to the bottom */
   display: flex;
   flex-direction: column;
 }
@@ -110,4 +102,12 @@
   word-wrap: break-word;
   margin-top: 0.75rem;
   margin-bottom: 0; /* Clear bottom margins to prevent layout calculations breaking */
+}
+.cardActions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Matches the spacing in your Hero section */
+  margin-top: auto; /* Ensures alignment across the entire grid row */
+  padding: 1rem 1.5rem 0 1.5rem;
+  width: 100%;
 }
