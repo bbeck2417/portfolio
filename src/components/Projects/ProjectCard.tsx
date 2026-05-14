@@ -1,9 +1,12 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import styles from "./Projects.module.css";
+import SocialButton from "../SocialButton/SocialButton";
+import { GithubIcon, GlobeIcon } from "../Icons";
 
 interface ProjectCardProps {
   href: string;
+  githubHref: string;
   title: string;
   imageSrc: string | StaticImageData;
   description: string;
@@ -11,17 +14,13 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
+  githubHref,
   title,
   imageSrc,
   description,
 }) => {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`${styles.projectCard} montserrat-200`}
-    >
+    <div className={`${styles.projectCard} montserrat-200`}>
       <div className={styles.projectTitle}>
         <h3>{title}</h3>
       </div>
@@ -33,14 +32,37 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           width={400}
           height={250}
           className={styles.projectImageStyle}
-          priority={true} /* Optimizes loading speeds for top layout assets */
+          priority={true}
         />
       </div>
 
       <div className={styles.projectContent}>
         <p>{description}</p>
       </div>
-    </a>
+
+      {/* Action Links Container */}
+      <div className={styles.cardActions}>
+        {githubHref && (
+          <SocialButton
+            href={githubHref}
+            ariaLabel={`View ${title} source code on GitHub`}
+            target="_blank"
+          >
+            <GithubIcon />
+          </SocialButton>
+        )}
+
+        {href && (
+          <SocialButton
+            href={href}
+            ariaLabel={`View live preview of ${title}`}
+            target="_blank"
+          >
+            <GlobeIcon />
+          </SocialButton>
+        )}
+      </div>
+    </div>
   );
 };
 

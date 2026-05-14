@@ -11,6 +11,7 @@ export interface Project {
   title: string;
   imageSrc: StaticImageData | string; // 2. Allow StaticImageData
   href: string;
+  githubHref: string;
   description: string;
   order: number;
 }
@@ -22,6 +23,7 @@ export function getAllProjects(): Project[] {
       title: "Vanilla JS, HTML, and CSS",
       imageSrc: webDevImg, // 3. Use the imported object instead of a string
       href: "https://bbeck2417.github.io/spacediscovery/",
+      githubHref: "https://github.com/bbeck2417/spacediscovery",
       description:
         "Developed a responsive website using HTML, CSS, and JavaScript. Implemented modern design principles.",
       order: 1,
@@ -30,7 +32,8 @@ export function getAllProjects(): Project[] {
       slug: "data-analytics",
       title: "Data Analysis Coming Soon",
       imageSrc: dataAnalyticsImg,
-      href: "https://bbeck2417.github.io/spacediscovery/",
+      href: "https://github.com/bbeck2417",
+      githubHref: "",
       description:
         "Analyzed large datasets using Python and Pandas to extract meaningful insights. Created visualizations.",
       order: 4,
@@ -39,7 +42,8 @@ export function getAllProjects(): Project[] {
       slug: "mobile-app",
       title: "React Native, TypeScript, SQLite, and Expo",
       imageSrc: mobileAppImg,
-      href: "https://github.com/bbeck2417/ease/",
+      href: "https://snack.expo.dev/@bbeck2417/ease-?platform=ios",
+      githubHref: "https://github.com/bbeck2417/ease/",
       description:
         "A React Native mental health tracker designed to monitor daily well-being. Built with TypeScript and SQLite, it features mood logging, resource management, and historical data visualization to support personal growth.",
       order: 3,
@@ -49,6 +53,8 @@ export function getAllProjects(): Project[] {
       title: "Next.js, Prisma, and Supabase",
       imageSrc: vercelFullStack,
       href: "https://sdev-255-final-project-error-404-te.vercel.app/",
+      githubHref:
+        "https://github.com/bbeck2417/sdev_255_final_project_error_404_team_not_found",
       description:
         "A full-stack course management platform for 'Xavier's School for Gifted Youngsters' built with Next.js, Prisma, and Supabase. Features a dynamic shopping cart and course registration system with seamless Vercel deployment.",
       order: 2,
