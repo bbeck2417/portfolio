@@ -28,16 +28,7 @@ export function getAllProjects(): Project[] {
         "Developed a responsive website using HTML, CSS, and JavaScript. Implemented modern design principles.",
       order: 1,
     },
-    {
-      slug: "data-analytics",
-      title: "Data Analysis Coming Soon",
-      imageSrc: dataAnalyticsImg,
-      href: "https://github.com/bbeck2417",
-      githubHref: "",
-      description:
-        "Analyzed large datasets using Python and Pandas to extract meaningful insights. Created visualizations.",
-      order: 4,
-    },
+
     {
       slug: "mobile-app",
       title: "React Native, TypeScript, SQLite, and Expo",
