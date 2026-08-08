@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './SocialButton.module.css';
-import { getAssetPath } from '../../lib/utils';
 
 interface SocialButtonProps {
   href?: string;
