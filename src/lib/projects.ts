@@ -5,6 +5,7 @@ import webDevImg from "../../public/images/space-discoveries-project-thumbnail.j
 import dataAnalyticsImg from "../../public/images/data-analytics-placeholder.jpg";
 import mobileAppImg from "../../public/images/easeScreenshot.png";
 import vercelFullStack from "../../public/images/vercelNext.png";
+import weatherly from "../../public/images/weatherly.png";
 
 export interface Project {
   slug: string;
@@ -49,6 +50,16 @@ export function getAllProjects(): Project[] {
       description:
         "A full-stack course management platform for 'Xavier's School for Gifted Youngsters' built with Next.js, Prisma, and Supabase. Features a dynamic shopping cart and course registration system with seamless Vercel deployment.",
       order: 2,
+    },
+    {
+      slug: "weatherly",
+      title: "Weatherly — Next.js Weather App",
+      imageSrc: weatherly,
+      href: "https://weather-app-kappa-ivory-64.vercel.app/",
+      githubHref: "https://github.com/bbeck2417/weather-app",
+      description:
+        "A responsive weather dashboard built with Next.js and TypeScript. Search any city to view live current conditions and a five-day forecast from the Open-Meteo API, with weather-responsive visual backgrounds. Includes GitHub Actions CI for linting and production builds, plus automatic Vercel deployments.",
+      order: 4,
     },
   ];
 
