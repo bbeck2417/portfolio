@@ -2,11 +2,12 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import styles from "./Projects.module.css";
 import SocialButton from "../SocialButton/SocialButton";
-import { GithubIcon, GlobeIcon } from "../Icons";
+import { FigmaIcon, GithubIcon, GlobeIcon } from "../Icons";
 
 interface ProjectCardProps {
-  href: string;
-  githubHref: string;
+  href?: string;
+  githubHref?: string;
+  figmaHref?: string;
   title: string;
   imageSrc: string | StaticImageData;
   description: string;
@@ -15,6 +16,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({
   href,
   githubHref,
+  figmaHref,
   title,
   imageSrc,
   description,
@@ -49,6 +51,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             target="_blank"
           >
             <GithubIcon />
+          </SocialButton>
+        )}
+
+        {figmaHref && (
+          <SocialButton
+            href={figmaHref}
+            ariaLabel={`View ${title} design in Figma`}
+            target="_blank"
+          >
+            <FigmaIcon />
           </SocialButton>
         )}
 

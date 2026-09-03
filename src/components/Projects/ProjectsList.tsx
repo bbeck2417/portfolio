@@ -20,6 +20,7 @@ const ProjectsList: React.FC<ProjectsListProps> = ({ projects }) => {
             imageSrc={project.imageSrc}
             description={project.description}
             githubHref={project.githubHref}
+            figmaHref={project.figmaHref}
           />
         ))}
       </div>
