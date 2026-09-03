@@ -5,13 +5,15 @@ import webDevImg from "../../public/images/space-discoveries-project-thumbnail.j
 import mobileAppImg from "../../public/images/easeScreenshot.png";
 import vercelFullStack from "../../public/images/vercelNext.png";
 import weatherly from "../../public/images/weatherly.png";
+import newsAssignmentApp from "../../public/images/news-assignment-app-uiux.png";
 
 export interface Project {
   slug: string;
   title: string;
   imageSrc: StaticImageData | string; // 2. Allow StaticImageData
-  href: string;
-  githubHref: string;
+  href?: string;
+  githubHref?: string;
+  figmaHref?: string;
   description: string;
   order: number;
 }
@@ -59,6 +61,16 @@ export function getAllProjects(): Project[] {
       description:
         "A responsive weather dashboard built with Next.js and TypeScript. Search cities with a debounced typeahead, select among duplicate locations, and view live current conditions and a five-day forecast from the Open-Meteo API. Features weather-responsive backgrounds, Vitest unit tests, GitHub Actions CI, and automatic Vercel deployments.",
       order: 4,
+    },
+    {
+      slug: "news-assignment-app-uiux",
+      title: "News Assignment App UI/UX",
+      imageSrc: newsAssignmentApp,
+      figmaHref:
+        "https://www.figma.com/design/Wdwu2gGTw3cVSKAVp2pIoP/News-Assignment-App?node-id=0-1&t=FkjhPzSpy4pvYx3N-1",
+      description:
+        "A desktop UI/UX concept for coordinating newsroom assignments, with date-based planning, live RSS updates, organized coverage sections, time-slot scheduling, and a focused detail panel.",
+      order: 5,
     },
   ];
 
